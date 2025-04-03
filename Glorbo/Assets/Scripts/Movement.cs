@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public interface Movement {
-    private Rigidbody2D body;
     void Move(double magnitude);
     void Jump();
     void Interact();
