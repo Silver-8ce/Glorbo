@@ -13,8 +13,8 @@ public class Player : Character {
         
     }
 
-    public override void Move(double magnitude) {
-        
+    public new void Move(double magnitude) {
+        base.Move(magnitude);
     }
     public new void Jump() {
         base.Jump();

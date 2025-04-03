@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public abstract class Character : MonoBehaviour {
     public Rigidbody2D body;
@@ -22,7 +23,14 @@ public abstract class Character : MonoBehaviour {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
     }
 
-    public abstract void Move(double magnitude);
+    public void Move(double magnitude) {
+        if (magnitude != 0) {
+            //TODO: make this not slow you down if you already going in that direction
+            float xvel = (float)(moveSpeed * magnitude);
+            body.velocity = new Vector2(xvel, body.velocity.y);
+            transform.localScale = new Vector2(Math.Sign(magnitude), 1f);
+        }
+    }
     public void Jump() {
         if (isGrounded)
             body.velocity = new Vector2(body.velocity.x, jumpSpeed);
