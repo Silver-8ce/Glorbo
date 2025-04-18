@@ -19,7 +19,7 @@ public abstract class Character : MonoBehaviour {
         health = maxHealth;
     }
 
-    void Update() {
+    public void Update() {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
     }
 
@@ -29,9 +29,12 @@ public abstract class Character : MonoBehaviour {
             float xvel = (float)(moveSpeed * magnitude);
             body.velocity = new Vector2(xvel, body.velocity.y);
             transform.localScale = new Vector2(Math.Sign(magnitude), 1f);
+        } else {
+            body.velocity = new Vector2(0, body.velocity.y);
         }
     }
     public void Jump() {
+        print("jump " + isGrounded);
         if (isGrounded)
             body.velocity = new Vector2(body.velocity.x, jumpSpeed);
     }

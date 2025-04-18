@@ -10,7 +10,7 @@ public class Player : Character {
 
     // Update is called once per frame
     void Update() {
-        
+        base.Update();
     }
 
     public new void Move(double magnitude) {

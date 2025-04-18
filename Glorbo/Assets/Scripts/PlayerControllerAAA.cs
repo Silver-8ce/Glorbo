@@ -16,7 +16,6 @@ public class PlayerControllerAAA : MonoBehaviour {
         if (Input.GetButtonDown("Jump")) {
             target.Jump();
         }
-        print(Input.GetAxisRaw("Horizontal"));
         target.Move(Input.GetAxisRaw("Horizontal"));
     }
 }
