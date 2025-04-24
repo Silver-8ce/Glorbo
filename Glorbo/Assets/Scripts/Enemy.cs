@@ -13,6 +13,13 @@ public class Enemy : Character {
         
     }
 
+    public void playerTakeControl()
+    {
+        GetComponent<Player>().enabled = true;
+        GetComponent<PlayerControllerAAA>().enabled = true;
+        this.enabled = false;
+    }
+
     public new void Move(double magnitude) {
         base.Move(magnitude);
     }
