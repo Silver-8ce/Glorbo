@@ -8,6 +8,7 @@ public class PlayerControllerAAA : MonoBehaviour
     public Player player;
     private Character target;
     private Enemy hostToSwapTo;
+    private static bool controlingHost = false;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,13 @@ public class PlayerControllerAAA : MonoBehaviour
                 if(hostToSwapTo != null)
                 {
                     swapToHost();
+                    controlingHost = true;
+                }
+                else if(hostToSwapTo == null && controlingHost)
+                {
+                    GlorpPrimeManager.instance.respawnGlorpPrime(transform.position);
+                    controlingHost = false;
+                    gameObject.SetActive(false);
                 }
             }
             target.Move(Input.GetAxisRaw("Horizontal"));
